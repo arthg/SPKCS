@@ -29,12 +29,12 @@ namespace WW.WeatherFeedClient.Tests.WeatherAlerts
             public void Should_fetch_the_forecast_events_from_the_service_and_report_the_alert_events()
             {
                 //arrange
-                var forecastEvents = Enumerable.Empty<WeatherFeedEvent>();
+                var forecastEvents = Enumerable.Empty<WeatherFeedEvent>().ToArray();
                 _weatherFeedClient
                     .Setup(c => c.GetForecastEvents())
                     .Returns(forecastEvents);
 
-                var alertableEvents = Enumerable.Empty<AlertableWeatherEvent>();
+                var alertableEvents = Enumerable.Empty<AlertableWeatherEvent>().ToArray();
                 _weatherAlertGenerator
                     .Setup(g => g.EmitAlerts(forecastEvents))
                     .Returns(alertableEvents);

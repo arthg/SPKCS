@@ -22,7 +22,7 @@ namespace WW.WeatherFeedClient.Tests.WeatherAlerts
             [Test]
             public void Should_not_emit_alerts_when_there_are_no_weather_feed_events()
             {
-                //act&assert
+                //act & assert
                 _sut.EmitAlerts(Enumerable.Empty<WeatherFeedEvent>()).Should().BeEmpty();
             }
         }
