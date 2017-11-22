@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using System.Linq;
 using WW.WeatherFeedClient.WeatherAlerts;
+using WW.WeatherFeedClient.WeatherAlerts.WeatherFeed;
 using WW.WeatherFeedClient.WeatherFeed;
 
 namespace WW.WeatherFeedClient.Tests.WeatherAlerts
@@ -10,14 +11,16 @@ namespace WW.WeatherFeedClient.Tests.WeatherAlerts
     [TestFixture]
     public abstract class WeatherAlertReporterTests
     {
-        private Mock<IWeatherFeedClient> _weatherFeedClient;
+        private Mock<IAlertableWeatherEvent> _weatherFeedClient;
+        private Mock<IWeatherAlertGenerator> _weatherAlertGenerator;
         private WeatherAlertReporter _sut;
 
         [SetUp]
         public void PrepareWeatherAlertReporter()
         {
-            _weatherFeedClient = new Mock<IWeatherFeedClient>(MockBehavior.Strict);
-            _sut = new WeatherAlertReporter(_weatherFeedClient.Object);
+            _weatherFeedClient = new Mock<IAlertableWeatherEvent>(MockBehavior.Strict);
+            _weatherAlertGenerator = new Mock<IWeatherAlertGenerator>(MockBehavior.Strict);
+            _sut = new WeatherAlertReporter(_weatherFeedClient.Object, _weatherAlertGenerator.Object);
         }
 
         public sealed class GetWeatherAlertsMethod : WeatherAlertReporterTests
@@ -31,11 +34,16 @@ namespace WW.WeatherFeedClient.Tests.WeatherAlerts
                     .Setup(c => c.GetForecastEvents())
                     .Returns(forecastEvents);
 
+                var alertableEvents = Enumerable.Empty<AlertableWeatherEvent>();
+                _weatherAlertGenerator
+                    .Setup(g => g.EmitAlerts(forecastEvents))
+                    .Returns(alertableEvents);
+
                 //act
                 var alerts = _sut.GetWeatherAlerts();
 
                 //assert
-                //alerts.Should().BeSameAs(forecastEvents); // TODO - obviously this will change on further impl
+                alerts.Should().BeSameAs(alertableEvents);
             }
         }
     }

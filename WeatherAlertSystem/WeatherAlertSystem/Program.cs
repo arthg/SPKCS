@@ -25,9 +25,10 @@ namespace WW.WeatherAlertSystem
             Mapper.Initialize(m => m.AddProfile(new WeatherFeedMapperProfile()));
 
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<IWeatherFeedClient, YahooWeatherFeedClient>()
+                .AddSingleton<IAlertableWeatherEvent, YahooWeatherFeedClient>()
                 .AddSingleton<IRestClient, RestClient>()
                 .AddSingleton<IWeatherAlertReporter, WeatherAlertReporter>()
+                .AddSingleton<IWeatherAlertGenerator, WeatherAlertGenerator>()
                 .BuildServiceProvider();
 
             var weatherAlertReporter = serviceProvider.GetService<IWeatherAlertReporter>();

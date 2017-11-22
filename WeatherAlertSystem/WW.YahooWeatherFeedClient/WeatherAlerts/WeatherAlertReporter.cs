@@ -12,11 +12,13 @@ namespace WW.WeatherFeedClient.WeatherAlerts
 
     public sealed class WeatherAlertReporter : IWeatherAlertReporter
     {
-        private readonly IWeatherFeedClient _weatherFeedClient;
+        private readonly IAlertableWeatherEvent _weatherFeedClient;
+        private readonly IWeatherAlertGenerator _weatherAlertGenerator;
 
-        public WeatherAlertReporter(IWeatherFeedClient weatherFeedClient)
+        public WeatherAlertReporter(IAlertableWeatherEvent weatherFeedClient, IWeatherAlertGenerator weatherAlertGenerator)
         {
             _weatherFeedClient = weatherFeedClient;
+            _weatherAlertGenerator = weatherAlertGenerator;
         }
 
         public IEnumerable<AlertableWeatherEvent> GetWeatherAlerts()

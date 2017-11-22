@@ -1,5 +1,8 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
+using System.Linq;
 using WW.WeatherFeedClient.WeatherAlerts;
+using WW.WeatherFeedClient.WeatherFeed;
 
 namespace WW.WeatherFeedClient.Tests.WeatherAlerts
 {
@@ -17,14 +20,10 @@ namespace WW.WeatherFeedClient.Tests.WeatherAlerts
         public sealed class EmitAlertsMethod : WeatherAlertGeneratorTests
         {
             [Test]
-            public void Should_()
+            public void Should_not_emit_alerts_when_there_are_no_weather_feed_events()
             {
-                //arrange
-
-                //act
-                _sut.EmitAlerts();
-
-                //assert
+                //act&assert
+                _sut.EmitAlerts(Enumerable.Empty<WeatherFeedEvent>()).Should().BeEmpty();
             }
         }
     }
