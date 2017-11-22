@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WW.WeatherFeedClient.WeatherAlerts.WeatherFeed;
 using WW.WeatherFeedClient.WeatherFeed;
 
 namespace WW.WeatherFeedClient.WeatherAlerts

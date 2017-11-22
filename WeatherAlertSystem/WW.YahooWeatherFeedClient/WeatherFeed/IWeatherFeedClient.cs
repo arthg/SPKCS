@@ -2,7 +2,7 @@
 
 namespace WW.WeatherFeedClient.WeatherFeed
 {
-    public interface IAlertableWeatherEvent
+    public interface IWeatherFeedClient
     {
         IEnumerable<WeatherFeedEvent> GetForecastEvents();
     }

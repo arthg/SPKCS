@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WW.WeatherFeedClient.WeatherAlerts.WeatherFeed;
 using WW.WeatherFeedClient.WeatherFeed;
 
 namespace WW.WeatherFeedClient.WeatherAlerts
@@ -12,10 +11,10 @@ namespace WW.WeatherFeedClient.WeatherAlerts
 
     public sealed class WeatherAlertReporter : IWeatherAlertReporter
     {
-        private readonly IAlertableWeatherEvent _weatherFeedClient;
+        private readonly IWeatherFeedClient _weatherFeedClient;
         private readonly IWeatherAlertGenerator _weatherAlertGenerator;
 
-        public WeatherAlertReporter(IAlertableWeatherEvent weatherFeedClient, IWeatherAlertGenerator weatherAlertGenerator)
+        public WeatherAlertReporter(IWeatherFeedClient weatherFeedClient, IWeatherAlertGenerator weatherAlertGenerator)
         {
             _weatherFeedClient = weatherFeedClient;
             _weatherAlertGenerator = weatherAlertGenerator;

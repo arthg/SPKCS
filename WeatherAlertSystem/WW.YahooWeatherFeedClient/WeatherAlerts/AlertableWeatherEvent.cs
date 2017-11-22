@@ -1,4 +1,4 @@
-﻿namespace WW.WeatherFeedClient.WeatherAlerts.WeatherFeed
+﻿namespace WW.WeatherFeedClient.WeatherAlerts
 {
     public sealed class AlertableWeatherEvent
     {

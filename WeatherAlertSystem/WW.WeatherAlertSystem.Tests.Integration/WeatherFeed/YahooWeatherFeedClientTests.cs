@@ -2,7 +2,7 @@
 using RestSharp;
 using WW.WeatherFeedClient.WeatherFeed;
 
-namespace WW.WeatherAlertSystem.Tests.Integration.WeatherFeed
+namespace WW.WeatherFeedClient.Tests.Integration.WeatherFeed
 {
     [TestFixture]
     public abstract class YahooWeatherFeedClientTests
