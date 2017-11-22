@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAlertSystem", "WeatherAlertSystem\WeatherAlertSystem.csproj", "{D2F51A94-21FE-4AD0-A5E1-AD1EB2E01CC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WW.WeatherAlertSystem", "WeatherAlertSystem\WW.WeatherAlertSystem.csproj", "{D2F51A94-21FE-4AD0-A5E1-AD1EB2E01CC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WW.WeatherFeedClient.Tests", "WW.WeatherAlertSystem.Tests\WW.WeatherFeedClient.Tests.csproj", "{A0D11A1A-D09C-433E-A065-5FEA0F9364F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WW.WeatherFeedClient.Tests.Integration", "WW.WeatherAlertSystem.Tests.Integration\WW.WeatherFeedClient.Tests.Integration.csproj", "{8DB9A1BC-2ABD-46E7-9CB2-EA8CAED2ED85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WW.WeatherFeedClient", "WW.YahooWeatherFeedClient\WW.WeatherFeedClient.csproj", "{66201741-5BCA-4F71-BE9D-09FA1661FA7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{D2F51A94-21FE-4AD0-A5E1-AD1EB2E01CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2F51A94-21FE-4AD0-A5E1-AD1EB2E01CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2F51A94-21FE-4AD0-A5E1-AD1EB2E01CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0D11A1A-D09C-433E-A065-5FEA0F9364F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D11A1A-D09C-433E-A065-5FEA0F9364F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D11A1A-D09C-433E-A065-5FEA0F9364F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D11A1A-D09C-433E-A065-5FEA0F9364F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB9A1BC-2ABD-46E7-9CB2-EA8CAED2ED85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB9A1BC-2ABD-46E7-9CB2-EA8CAED2ED85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB9A1BC-2ABD-46E7-9CB2-EA8CAED2ED85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB9A1BC-2ABD-46E7-9CB2-EA8CAED2ED85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66201741-5BCA-4F71-BE9D-09FA1661FA7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66201741-5BCA-4F71-BE9D-09FA1661FA7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66201741-5BCA-4F71-BE9D-09FA1661FA7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66201741-5BCA-4F71-BE9D-09FA1661FA7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
