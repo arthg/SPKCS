@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using RestSharp;
 using System;
 using WW.WeatherFeedClient.WeatherFeed;
@@ -11,10 +12,16 @@ namespace WW.WeatherAlertSystem
          * open source tools:
          * NUnit
          * RestSharp
+         * AutoMapper
+         * FluentAssertions
+         * Exceptionless.RandomData
          * 
          */
         static void Main(string[] args)
         {
+            //TODO: use discovery
+            Mapper.Initialize(m => m.AddProfile(new WeatherFeedMapperProfile()));
+
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IWeatherFeedClient, YahooWeatherFeedClient>()
                 .AddSingleton<IRestClient, RestClient>()

@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace WW.WeatherFeedClient.WeatherFeed
 {
+    //TODO: consider using dynamic.  Did that, did not like the outcome but there may be better approach 
     public sealed class YahooWeatherFeedResponse
     {
         public Query Query { get; set; }

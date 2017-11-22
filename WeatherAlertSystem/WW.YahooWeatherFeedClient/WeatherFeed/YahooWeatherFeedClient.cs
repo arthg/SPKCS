@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using AutoMapper;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -28,8 +28,9 @@ namespace WW.WeatherFeedClient.WeatherFeed
             // TODO: error handling
 
             var forecastEvents = response.Data.Query.Results.Channel.Item.Forecast;
+            var weatherFeedEvents = Mapper.Map<IEnumerable<ForecastEvent>, IEnumerable<WeatherFeedEvent>>(forecastEvents);
 
-            return null;
+            return weatherFeedEvents;
         }
     }
 }
