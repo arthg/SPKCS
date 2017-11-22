@@ -35,6 +35,11 @@ Scenario:  Multiple significant weather events displayed
     And the "weather alert" content is identical to the single alert scenario
 
 
+Scenario:  No significant weather events in the weather event feed
+  Given the "weather event feed" forecast does not include any forecast events of interest
+   When the "weather alert system" is executed
+   Then the message "No weather alerts at this time." is displayed on the console
+
 # futures:
 # configure URL for weather event feed
 # configure high / low temps

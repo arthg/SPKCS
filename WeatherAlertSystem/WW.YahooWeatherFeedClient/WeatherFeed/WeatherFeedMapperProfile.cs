@@ -6,7 +6,8 @@ namespace WW.WeatherFeedClient.WeatherFeed
     {
         public WeatherFeedMapperProfile()
         {
-            CreateMap<ForecastEvent, WeatherFeedEvent>();
+            CreateMap<ForecastEvent, WeatherFeedEvent>()
+                .ForMember(d => d.Event, opt => opt.MapFrom(s => s.Text));
         }
     }
 }

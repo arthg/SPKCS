@@ -15,7 +15,7 @@ namespace WW.WeatherAlertSystem.Tests.Integration.WeatherFeed
             _sut = new YahooWeatherFeedClient(new RestClient());
         }
 
-        public sealed class GetForecastEventsTests : YahooWeatherFeedClientTests
+        public sealed class GetForecastEventsMethod : YahooWeatherFeedClientTests
         {
             [Test]
             public void Should_query_the_weather_feed_for_forecast_events()
