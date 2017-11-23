@@ -21,8 +21,8 @@ namespace WW.WeatherFeedClient.Tests.WeatherFeed
                     Date = RandomData.GetString(10,10),
                     Day = RandomData.GetString(10, 10),
                     Text = RandomData.GetString(10, 10),
-                    High = RandomData.GetLong().ToString(),
-                    Low = RandomData.GetLong().ToString()
+                    High = RandomData.GetInt().ToString(),
+                    Low = RandomData.GetInt().ToString()
                 };
 
                 //act
