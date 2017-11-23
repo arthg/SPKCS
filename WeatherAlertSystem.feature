@@ -8,11 +8,17 @@ so that I know how to prepare for expected weather conditions
 
 # Assumptions:
 # The "weather event feed" reports high and low temperatures in degrees F
+
 # The high and low temperature limits for waether alerts are specified in degrees F
+
 # When a given "weather event feed" forecast has more than 1 alertable event
 # (for sample forcecast of snow and low temperature below 32 degrees)
 # that there will be more than one alert emitted.  The requirements state
-# if XXX, generate so that implies to generate an alert for each 
+# if XXX, generate so that implies to generate an alert for each
+
+# assume we can be case sensitive when inspecting the forecast events text
+
+# formatting details not specified on requirements, assume space delimited
 
 Background:
   Given a "weather event feed" web service
@@ -58,3 +64,6 @@ Scenario:  No significant weather events in the weather event feed
 # futures:
 # configure URL for weather event feed
 # configure high / low temps
+
+# Impl notes:
+# may need to re-visit hard-coded alertable event strings if different than what appears in actial weather feed

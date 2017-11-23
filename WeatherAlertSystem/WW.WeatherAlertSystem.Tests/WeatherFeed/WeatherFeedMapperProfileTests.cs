@@ -7,17 +7,11 @@ using WW.WeatherFeedClient.WeatherFeed;
 namespace WW.WeatherFeedClient.Tests.WeatherFeed
 {
     [TestFixture]
-    public abstract class WeatherFeedMapperProfileTests
+    public abstract class WeatherFeedMapperProfileTests : MapperProfileTestsBase<WeatherFeedMapperProfile>
     { 
+        // ReSharper disable once InconsistentNaming
         public sealed class ForecastEvent_to_WeatherFeedEvent_MapperTests : WeatherFeedMapperProfileTests
         {
-            //TODO: move to abstract base class
-            [Test]
-            public void Should_have_valid_configuration()
-            {
-                Mapper.Configuration.AssertConfigurationIsValid();
-            }
-
             [Test]
             public void Should_map_properties()
             {

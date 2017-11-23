@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using WW.WeatherFeedClient.WeatherFeed;
 
 namespace WW.WeatherFeedClient.WeatherAlerts
@@ -22,10 +21,9 @@ namespace WW.WeatherFeedClient.WeatherAlerts
 
         public IEnumerable<AlertableWeatherEvent> GetWeatherAlerts()
         {
-            //TODO - filter on events of interest
             var forecastEvents = _weatherFeedClient.GetForecastEvents();
 
-            return Enumerable.Empty<AlertableWeatherEvent>(); ;
+            return _weatherAlertGenerator.EmitAlerts(forecastEvents);
         }
     }
 }
