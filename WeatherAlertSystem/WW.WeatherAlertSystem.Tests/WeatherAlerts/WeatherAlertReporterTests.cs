@@ -25,7 +25,7 @@ namespace WW.WeatherFeedClient.Tests.WeatherAlerts
         public sealed class GetWeatherAlertsMethod : WeatherAlertReporterTests
         {
             [Test]
-            public void Should_fetch_the_forecast_events_from_the_service_and_report_the_alert_events()
+            public void Should_fetch_the_forecast_events_from_the_service_and_report_the_alertable_events()
             {
                 //arrange
                 var forecastEvents = Enumerable.Empty<WeatherFeedEvent>().ToArray();

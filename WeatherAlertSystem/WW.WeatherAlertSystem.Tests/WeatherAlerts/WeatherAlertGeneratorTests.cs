@@ -98,6 +98,51 @@ namespace WW.WeatherFeedClient.Tests.WeatherAlerts
                 alerts.Single().Event.Should().Be("Freezing temperature");
             }
 
+            [Test]
+            public void Should_emit_multiple_alerts_when_more_than_one_alertable_event_is_detected_for_a_single_feed_event()
+            {
+                //arrange
+                _weatherFeedEvents.Add(new WeatherFeedEvent
+                {
+                    Event = "Rain",
+                    High = RandomData.GetInt(FreezingLimitDegreesF, HighHeatLimitDegreesF),
+                    Low = FreezingLimitDegreesF - 1
+                });
+
+                //act
+                var alerts = _sut.EmitAlerts(_weatherFeedEvents);
+
+                //assert
+                alerts.Select(a => a.Event).Should().BeEquivalentTo("Rain", "Freezing temperature");
+            }
+
+            [Test]
+            public void Should_emit_multiple_alerts_when_more_than_one_alertable_event_is_detected_in_the_weather_feed_events()
+            {
+                //arrange
+                _weatherFeedEvents.AddRange(new[]
+                {
+                    new WeatherFeedEvent
+                    {
+                        Event = "Rain",
+                        High = RandomData.GetInt(FreezingLimitDegreesF, HighHeatLimitDegreesF),
+                        Low = RandomData.GetInt(FreezingLimitDegreesF, HighHeatLimitDegreesF)
+                    },
+                    new WeatherFeedEvent
+                    {
+                        Event = "Thunderstorms",
+                        High = RandomData.GetInt(FreezingLimitDegreesF, HighHeatLimitDegreesF),
+                        Low = RandomData.GetInt(FreezingLimitDegreesF, HighHeatLimitDegreesF)
+                    }
+                });
+
+                //act
+                var alerts = _sut.EmitAlerts(_weatherFeedEvents);
+
+                //assert
+                alerts.Select(a => a.Event).Should().BeEquivalentTo("Rain", "Thunderstorms");
+            }
+
             private readonly IEnumerable<string> _alertableEvents = new[] {"Rain", "Thunderstorms", "Snow", "Ice" };
         }
     }

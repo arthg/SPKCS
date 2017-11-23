@@ -16,7 +16,6 @@ namespace WW.WeatherFeedClient.Tests.WeatherFeed
             public void Should_map_properties()
             {
                 //arrange
-                //TODO - consider AutoFixture for random initialization
                 var forecastEvent = new ForecastEvent
                 {
                     Date = RandomData.GetString(10,10),

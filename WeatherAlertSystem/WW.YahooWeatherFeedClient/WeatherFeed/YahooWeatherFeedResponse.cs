@@ -2,12 +2,13 @@
 
 namespace WW.WeatherFeedClient.WeatherFeed
 {
-    //TODO: consider using dynamic.  Did that, did not like the outcome but there may be better approach 
+    // ReSharper disable UnusedAutoPropertyAccessor.Global
     public sealed class YahooWeatherFeedResponse
     {
         public Query Query { get; set; }
     }
 
+    // ReSharper disable ClassNeverInstantiated.Global
     public sealed class Query
     {
         public Results Results { get; set; }
@@ -27,6 +28,8 @@ namespace WW.WeatherFeedClient.WeatherFeed
     {
         public IEnumerable<ForecastEvent> Forecast { get; set; }
     }
+    // ReSharper restore UnusedAutoPropertyAccessor.Global
+    // ReSharper restore ClassNeverInstantiated.Global
 
     public sealed class ForecastEvent
     {

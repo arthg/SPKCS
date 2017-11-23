@@ -55,7 +55,7 @@ namespace WW.WeatherFeedClient.WeatherAlerts
             return weatherFeedEvent.Low < FreezingLimitDegreesF;
         }
 
-        private static void AddAlert(WeatherFeedEvent weatherFeedEvent, List<AlertableWeatherEvent> alerts, string @event = null)
+        private static void AddAlert(WeatherFeedEvent weatherFeedEvent, ICollection<AlertableWeatherEvent> alerts, string @event = null)
         {
             //TODO: inject IMapper
             var alert = Mapper.Map<AlertableWeatherEvent>(weatherFeedEvent);

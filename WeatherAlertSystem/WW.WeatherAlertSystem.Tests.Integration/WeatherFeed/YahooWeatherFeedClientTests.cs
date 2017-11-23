@@ -23,7 +23,7 @@ namespace WW.WeatherFeedClient.Tests.Integration.WeatherFeed
                 //arrange
                 
                 //act
-                _sut.GetForecastEvents();
+                var forecastEvents = _sut.GetForecastEvents();
 
                 //assert
             }
