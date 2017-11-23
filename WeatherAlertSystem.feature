@@ -1,24 +1,10 @@
 Feature: As a consumer of WeatherWatch
-I want to view current weather event alerts for specific forecast events
-so that I know how to prepare for expected weather conditions
+I want to view all the current weather event alerts for specific forecast events
+so that I know how to prepare for the expected weather conditions
 
 # Glossary:
 # "weather event feed": a weather data web service that returns current weather conditions
 # "weather alert system": a command line application provided by WeatherWatch 
-
-# Assumptions:
-# The "weather event feed" reports high and low temperatures in degrees F
-
-# The high and low temperature limits for waether alerts are specified in degrees F
-
-# When a given "weather event feed" forecast has more than 1 alertable event
-# (for sample forcecast of snow and low temperature below 32 degrees)
-# that there will be more than one alert emitted.  The requirements state
-# if XXX, generate so that implies to generate an alert for each
-
-# assume we can be case sensitive when inspecting the forecast events text
-
-# formatting details not specified on requirements, assume space delimited
 
 Background:
   Given a "weather event feed" web service
@@ -27,10 +13,11 @@ Background:
 Scenario:  Significant weather event displayed
   Given the "weather event feed" forecast calls for <forecast event>
    When the "weather alert system" is executed
-   Then the "weather alert" is displayed on the console
+   Then the "weather alert" is displayed on the console on a single line
     And the "weather alert" includes the day of the week
     And the "weather alert" includes the date 
     And the "weather alert" includes the <weather alert type>
+    And the "weather alert" items are seperated by a single space
 
 Examples:
 |forecast event                   |weather alert type        |
@@ -55,15 +42,16 @@ Scenario:  Display multiple significant weather events
    Then a one line "weather alert" is displayed on the console for each forecast event
     And the "weather alert" content is identical to the single alert scenario
 
-#TODO: confirm business requirement
 Scenario:  No significant weather events in the weather event feed
   Given the "weather event feed" forecast does not include any forecast events of interest
    When the "weather alert system" is executed
    Then the message "No weather alerts at this time." is displayed on the console
+#TODO: confirm business requirement for wording
 
-# futures:
-# configure URL for weather event feed
-# configure high / low temps
+Scenario:  An unexpected error occurs
+   When the "weather alert system" is executed
+    And an expected error occurs for example the weather feed service is not responsive
+   Then an appropriate error message is displayed on the console
+#TODO: need business requirement for wording
 
-# Impl notes:
-# may need to re-visit hard-coded alertable event strings if different than what appears in actial weather feed
+
