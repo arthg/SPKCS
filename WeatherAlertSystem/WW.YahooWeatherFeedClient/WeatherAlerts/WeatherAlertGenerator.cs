@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using WW.WeatherFeedClient.Common;
 using WW.WeatherFeedClient.WeatherFeed;
+using IMapper = WW.WeatherFeedClient.Common.IMapper;
 
 namespace WW.WeatherFeedClient.WeatherAlerts
 {
@@ -13,9 +13,15 @@ namespace WW.WeatherFeedClient.WeatherAlerts
 
     public sealed class WeatherAlertGenerator : IWeatherAlertGenerator
     {
+        private readonly IMapper _mapper;
         private const int HighHeatLimitDegreesF = 85;
         private const int FreezingLimitDegreesF = 32;
         private readonly IEnumerable<string> _alertableEvents = new[] {"Rain", "Thunderstorms", "Snow", "Ice" };
+
+        public WeatherAlertGenerator(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
 
         public IEnumerable<AlertableWeatherEvent> EmitAlerts(IEnumerable<WeatherFeedEvent> weatherFeedEvents)
         {
@@ -55,10 +61,9 @@ namespace WW.WeatherFeedClient.WeatherAlerts
             return weatherFeedEvent.Low < FreezingLimitDegreesF;
         }
 
-        private static void AddAlert(WeatherFeedEvent weatherFeedEvent, ICollection<AlertableWeatherEvent> alerts, string @event = null)
+        private void AddAlert(WeatherFeedEvent weatherFeedEvent, ICollection<AlertableWeatherEvent> alerts, string @event = null)
         {
-            //TODO: inject IMapper
-            var alert = Mapper.Map<AlertableWeatherEvent>(weatherFeedEvent);
+            var alert = _mapper.Map<WeatherFeedEvent, AlertableWeatherEvent>(weatherFeedEvent);
             if (@event != null)
             {
                 alert.Event = @event;

@@ -27,6 +27,7 @@ As of this time there is some kind of environment problem on my personal laptop 
 6. Better error handling after RestSharp.Execute call?  Probably no need.
 7. Consider using dynamic for REST response parsing.  Did that, did not like the outcome, rolled it back.  Still, there may be better approach than the current one.
 8. Configure High/Low temperature limits
+9. Consider re-organizing project structure, break up WeatherFeedClient assembly
 
 # Instructions for running from CLI
 1. cd to project directory

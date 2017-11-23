@@ -55,6 +55,7 @@ namespace WW.WeatherAlertSystem
                 .AddSingleton<IRestClient, RestClient>()
                 .AddSingleton<IWeatherAlertReporter, WeatherAlertReporter>()
                 .AddSingleton<IWeatherAlertGenerator, WeatherAlertGenerator>()
+                .AddSingleton<WeatherFeedClient.Common.IMapper, WeatherWatchMapper>()
                 .BuildServiceProvider();
 
             return serviceProvider.GetService<IWeatherAlertReporter>();
